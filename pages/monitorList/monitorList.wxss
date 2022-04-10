@@ -1,0 +1,124 @@
+/* pages/monitorList/monitorList.wxss */
+.monitorList-page {
+    padding: 36rpx 30rpx;
+    background: #F7F7F7;
+    height: 100%;
+}
+.search-area {
+    width: 686rpx;
+    height: 72rpx;
+    background: #FFFFFF;
+    border-radius: 12rpx;
+    display: flex;
+    align-items: center;
+}
+.icon-box-img {
+    margin-left: 34rpx;
+}
+.search-input {
+    flex: 1;
+    height: 100%;
+    margin-left: 8rpx;
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #999999;
+}
+.search-placeholder {
+    color: #999999;
+}
+
+.status-tab {
+    width: 686rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8rpx;
+}
+.item-status {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.status-text {
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.45);
+}
+.status-line {
+    width: 80rpx;
+    height: 4rpx;
+    background: #4080FF;
+    border-radius: 3rpx;
+    position: absolute;
+    bottom: 0;
+}
+
+.status-active {
+    font-weight: 500;
+    color: #1D6FE9
+}
+
+.device-list {
+    display: flex;
+    flex-direction: column;
+}
+.item-device {
+    width: 686rpx;
+    height: 120rpx;
+    background: #FFFFFF;
+    display: flex;
+    margin-top: 28rpx;
+}
+.device-status {
+    width: 76rpx;
+    height: 52rpx;
+    background: #04C7D9;
+    box-shadow: 0rpx 2rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+    border-radius: 0rpx 0rpx 8rpx 8rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 52rpx;
+    margin-top: -8rpx;
+    margin-left: 24rpx;
+}
+.device-status-error {
+    background: #A42614;
+}
+.device-desc {
+    display: flex;
+    flex-direction: column;
+}
+.device-name {
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #414448;
+    line-height: 34rpx;
+    margin-top: 18rpx;
+    margin-left: 28rpx;
+}
+.device-detail {
+    margin-top: 20rpx;
+    display: flex;
+}
+.device-local-img {
+    width: 30rpx;
+    height: 30rpx;
+}
+.device-detail-text {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 28rpx;
+    margin-left: 8rpx;
+}

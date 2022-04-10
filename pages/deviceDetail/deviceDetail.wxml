@@ -1,0 +1,46 @@
+<!--pages/deviceDetail/deviceDetail.wxml-->
+<view class="device-detail-page">
+    <view class="video-detail {{actionType ? 'video-detail-show' : ''}}">
+        <live-player class="live-player" src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="onError"/>
+        <view class="device-head">
+            <text class="head-device-name">测试生产线2号摄像头</text>
+            <text class="head-date-time">2022/01/14 10:00:00</text>
+        </view>
+    </view>
+    <view class="device-action {{actionType ? 'device-action-show' : ''}}">
+        <view class="action-btn-area">
+            <view class="action-btn voice-btn" bindtap="deviceAction">
+                <image class="action-icon" src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/juejin-miner.b78347c.png"></image>
+                <text class="action-name">语音对讲</text>
+            </view>
+            <view class="action-btn" bindtap="deviceAction">
+                <image class="action-icon" src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/juejin-miner.b78347c.png"></image>
+                <text class="action-name">云台控制</text>
+            </view>
+        </view>
+        <view class="controll-area" wx:if="{{actionType === 'controll'}}">
+            <view class="dir-btn-area">
+                <view class="dir-btn"></view>
+                <view class="dir-btn"></view>
+                <view class="dir-btn"></view>
+                <view class="dir-btn"></view>
+            </view>
+        </view>
+        <view class="underline" wx:if="{{actionType === 'controll'}}"></view>
+    </view>
+    <view class="mantle" wx:if="{{actionType === 'controll'}}" bindtap="hideActionBtn"></view>
+    <view class="device-list">
+        <view class="item-device" wx:for="{{deviceData}}" wx:key="index">
+            <view class="device-status {{item.status === '2' ? 'device-status-error' : ''}}">
+                <text>{{item.status === '1' ? '正常' : '异常'}}</text>
+            </view>
+            <view class="device-desc">
+                <text class="device-name">{{item.name}}</text>
+                <view class="device-detail">
+                    <!-- <icon class="device-local-img" type="search" size="24"></icon> -->
+                    <text class="device-detail-text">{{item.desc}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,194 @@
+/* pages/deviceDetail/deviceDetail.wxss */
+.device-detail-page {
+    display: flex;
+    flex-direction: column;
+    background: #F7F7F7;
+    height: 100%;
+}
+.video-detail {
+    width: 750rpx;
+    height: 400rpx;
+    position: relative;
+}
+.video-detail-show {
+    position: fixed;
+    z-index: 99;
+}
+.live-player {
+    width: 750rpx;
+    height: 400rpx;
+}
+.device-head {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 750rpx;
+    height: 40rpx;
+    background: rgba(0, 0, 0, 0.5);
+}
+.head-device-name, .head-date-time {
+    font-size: 20rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+.head-device-name {
+    margin-left: 36rpx;
+}
+.head-date-time {
+    margin-right: 30rpx;
+}
+.device-action {
+    width: 750rpx;
+    height: 200rpx;
+    background: #FFFFFF;
+    box-shadow: 0rpx 2rpx 12rpx 0rpx rgba(0, 0, 0, 0.1);
+    border-radius: 0rpx 0rpx 68rpx 68rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.action-btn-area {
+    display: flex;
+    justify-content: center;
+}
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    width: 96rpx;
+    height: 96rpx;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60rpx;
+}
+.action-icon {
+    width: 44rpx;
+    height: 44rpx;
+}
+.action-name {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 34rpx;
+    margin-top: 20rpx;
+}
+.voice-btn {
+    margin-right: 176rpx;
+}
+.device-action-show {
+    width: 750rpx;
+    height: 644rpx;
+    background: #FFFFFF;
+    box-shadow: 0rpx 2rpx 12rpx 0rpx rgba(0, 0, 0, 0.1);
+    border-radius: 0rpx 0rpx 68rpx 68rpx;
+    position: fixed;
+    top: 400rpx;
+    z-index: 99;
+}
+.controll-area {
+    width: 308rpx;
+    height: 308rpx;
+    border-radius: 100%;
+    background: #F1F1F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 68rpx;
+}
+.dir-btn-area {
+    width: 180rpx;
+    height: 180rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    transform: rotate(45deg);
+    align-content: space-between;
+}
+.dir-btn {
+    width: 50rpx;
+    height: 50rpx;
+    background-color: red;
+    margin-right: 60rpx;
+}
+.dir-btn:nth-of-type(2n + 2) {
+    margin-right: 0;
+}
+.underline {
+    width: 60rpx;
+    height: 4rpx;
+    background: #D8D8D8;
+    margin-top: 88rpx;
+}
+.mantle {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.device-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 32rpx;
+    margin-top: 12rpx;
+}
+.item-device {
+    width: 686rpx;
+    height: 120rpx;
+    background: #FFFFFF;
+    display: flex;
+    margin-top: 28rpx;
+}
+.device-status {
+    width: 76rpx;
+    height: 52rpx;
+    background: #04C7D9;
+    box-shadow: 0rpx 2rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+    border-radius: 0rpx 0rpx 8rpx 8rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 52rpx;
+    margin-top: -8rpx;
+    margin-left: 24rpx;
+}
+.device-status-error {
+    background: #A42614;
+}
+.device-desc {
+    display: flex;
+    flex-direction: column;
+}
+.device-name {
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #414448;
+    line-height: 34rpx;
+    margin-top: 18rpx;
+    margin-left: 28rpx;
+}
+.device-detail {
+    margin-top: 20rpx;
+    display: flex;
+}
+.device-local-img {
+    width: 30rpx;
+    height: 30rpx;
+}
+.device-detail-text {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 28rpx;
+    margin-left: 8rpx;
+}

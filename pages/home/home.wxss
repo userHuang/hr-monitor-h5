@@ -1,0 +1,32 @@
+/* pages/home/home.wxss */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner {
+    width: 750rpx;
+    height: 400rpx;
+}
+
+.title {
+    font-size: 36rpx;
+    color: #000000;
+    margin-top: 120rpx;
+}
+
+.login-btn {
+    width: 548rpx !important;
+    height: 110rpx;
+    line-height: 110rpx;
+    background: #7E1B0E;
+    color: #FFFFFF;
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    padding: 0;
+    margin-top: 80rpx;
+    border-radius: 60rpx;
+}
