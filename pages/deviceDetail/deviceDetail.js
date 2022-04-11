@@ -7,6 +7,8 @@ Page({
     data: {
         showAction: false,
         actionType: '',
+        controllDir: '',
+        voiceStatus: 'stop',
         deviceData: [{
             status: '1',
             name: '测试生产线2号摄像头',
@@ -76,14 +78,29 @@ Page({
     onError (e) {
         console.log(e, '==error====')
     },
-    deviceAction () {
+    deviceAction (e) {
+        const name = e.currentTarget.dataset.name
         this.setData({
-            actionType: 'controll'
+            actionType: name
+        })
+    },
+    dirSelect (e) {
+        const name = e.currentTarget.dataset.name
+        this.setData({
+            controllDir: name
         })
     },
     hideActionBtn () {
         this.setData({
-            actionType: ''
+            actionType: '',
+            controllDir: '',
+            voiceStatus: 'stop'
+        })
+    },
+    changeVoiceStatus () {
+        const voiceStatus = this.data.voiceStatus
+        this.setData({
+            voiceStatus: voiceStatus === 'stop' ? 'starting' : 'stop'
         })
     }
 })

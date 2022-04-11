@@ -58,14 +58,14 @@
     display: flex;
     flex-direction: column;
     width: 96rpx;
-    height: 96rpx;
+    height: 110rpx;
     justify-content: center;
     align-items: center;
-    margin-top: 60rpx;
+    margin-top: 46rpx;
 }
 .action-icon {
-    width: 44rpx;
-    height: 44rpx;
+    width: 72rpx;
+    height: 72rpx;
 }
 .action-name {
     font-size: 24rpx;
@@ -73,7 +73,7 @@
     font-weight: 400;
     color: #333333;
     line-height: 34rpx;
-    margin-top: 20rpx;
+    margin-top: 4rpx;
 }
 .voice-btn {
     margin-right: 176rpx;
@@ -109,13 +109,29 @@
     align-content: space-between;
 }
 .dir-btn {
-    width: 50rpx;
-    height: 50rpx;
-    background-color: red;
+    width: 40rpx;
+    height: 30rpx;
     margin-right: 60rpx;
 }
 .dir-btn:nth-of-type(2n + 2) {
     margin-right: 0;
+}
+.dir-btn-1 {
+    transform: rotate(-45deg);
+}
+.dir-btn-2 {
+    transform: rotate(45deg);
+}
+.dir-btn-3 {
+    transform: rotate(225deg);
+    margin-top: -14rpx !important;
+}
+.dir-btn-4 {
+    transform: rotate(135deg);
+    margin-right: -15rpx !important;
+}
+.dir-btn-5{
+    transform: rotate(180deg);
 }
 .underline {
     width: 60rpx;
@@ -191,4 +207,20 @@
     color: #999999;
     line-height: 28rpx;
     margin-left: 8rpx;
+}
+.voice-area {
+    display: flex;
+    flex-direction: column;
+}
+.voice-status-icon {
+    width: 114rpx;
+    height: 114rpx;
+}
+.voice-status-text {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 34rpx;
+    margin-top: 6rpx;
 }

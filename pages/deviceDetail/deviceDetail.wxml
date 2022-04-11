@@ -9,26 +9,32 @@
     </view>
     <view class="device-action {{actionType ? 'device-action-show' : ''}}">
         <view class="action-btn-area">
-            <view class="action-btn voice-btn" bindtap="deviceAction">
-                <image class="action-icon" src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/juejin-miner.b78347c.png"></image>
+            <view class="action-btn voice-btn" data-name="voice" bindtap="deviceAction">
+                <image class="action-icon" src="../static/images/voice-active.png" wx:if="{{actionType === 'voice'}}"></image>
+                <image class="action-icon" src="../static/images/voice.png" wx:else></image>
                 <text class="action-name">语音对讲</text>
             </view>
-            <view class="action-btn" bindtap="deviceAction">
-                <image class="action-icon" src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/juejin-miner.b78347c.png"></image>
+            <view class="action-btn" data-name="controll" bindtap="deviceAction">
+                <image class="action-icon" src="../static/images/controll-active.png" wx:if="{{actionType === 'controll'}}"></image>
+                <image class="action-icon" src="../static/images/controll.png" wx:else></image>
                 <text class="action-name">云台控制</text>
             </view>
         </view>
         <view class="controll-area" wx:if="{{actionType === 'controll'}}">
             <view class="dir-btn-area">
-                <view class="dir-btn"></view>
-                <view class="dir-btn"></view>
-                <view class="dir-btn"></view>
-                <view class="dir-btn"></view>
+                <image class="dir-btn dir-btn-1" src="{{controllDir === 'top' ? '../static/images/dir-active.png' : '../static/images/dir.png'}}" data-name="top" bindtap="dirSelect"></image>
+                <image class="dir-btn dir-btn-2" src="{{controllDir === 'right' ? '../static/images/dir-active.png' : '../static/images/dir.png'}}" data-name="right" bindtap="dirSelect"></image>
+                <image class="dir-btn dir-btn-3" src="{{controllDir === 'left' ? '../static/images/dir-active.png' : '../static/images/dir.png'}}" data-name="left" bindtap="dirSelect"></image>
+                <image class="dir-btn dir-btn-4" src="{{controllDir === 'botton' ? '../static/images/dir-active.png' : '../static/images/dir.png'}}" data-name="botton" bindtap="dirSelect"></image>
             </view>
         </view>
-        <view class="underline" wx:if="{{actionType === 'controll'}}"></view>
+        <view class="controll-area voice-area" wx:if="{{actionType === 'voice'}}">
+            <image class="voice-status-icon" src="{{voiceStatus === 'stop' ? '../static/images/voice-stop.png' : '../static/images/voice-in.png'}}" bindtap="changeVoiceStatus"></image>
+            <text class="voice-status-text">{{voiceStatus === 'stop' ? '开始对讲' : '对讲中'}}</text>
+        </view>
+        <view class="underline" wx:if="{{actionType}}"></view>
     </view>
-    <view class="mantle" wx:if="{{actionType === 'controll'}}" bindtap="hideActionBtn"></view>
+    <view class="mantle" wx:if="{{actionType}}" bindtap="hideActionBtn"></view>
     <view class="device-list">
         <view class="item-device" wx:for="{{deviceData}}" wx:key="index">
             <view class="device-status {{item.status === '2' ? 'device-status-error' : ''}}">

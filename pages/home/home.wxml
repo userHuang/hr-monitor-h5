@@ -1,6 +1,8 @@
 <!--pages/home/home.wxml-->
 <view class="home-page">
-    <image class="banner" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da025f33d7584f3ebc59624e72e0c9db~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp?"></image>
+    <image class="banner" src="../static/images/banner-bg.png"></image>
     <text class="title">汉瑞普泽工厂监控管理平台</text>
     <button class="login-btn" bindtap="viewListTap">立即登录</button>
+    <image class="bg-1" src="../static/images/home-bg1.png"></image>
+    <image class="bg-2" src="../static/images/home-bg2.png"></image>
 </view>
