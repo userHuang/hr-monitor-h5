@@ -3,7 +3,7 @@
     <view class="video-detail {{actionType ? 'video-detail-show' : ''}}">
         <live-player class="live-player" src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="onError"/>
         <view class="device-head">
-            <text class="head-device-name">测试生产线2号摄像头</text>
+            <text class="head-device-name">{{detailData.deviceName}}</text>
             <text class="head-date-time">2022/01/14 10:00:00</text>
         </view>
     </view>
@@ -36,15 +36,15 @@
     </view>
     <view class="mantle" wx:if="{{actionType}}" bindtap="hideActionBtn"></view>
     <view class="device-list">
-        <view class="item-device" wx:for="{{deviceData}}" wx:key="index">
-            <view class="device-status {{item.status === '2' ? 'device-status-error' : ''}}">
-                <text>{{item.status === '1' ? '正常' : '异常'}}</text>
+        <view class="item-device">
+            <view class="device-status {{detailData.status === 0 ? 'device-status-error' : ''}}">
+                <text>{{item.status === 1 ? '正常' : '异常'}}</text>
             </view>
             <view class="device-desc">
-                <text class="device-name">{{item.name}}</text>
+                <text class="device-name">{{detailData.deviceName}}</text>
                 <view class="device-detail">
-                    <!-- <icon class="device-local-img" type="search" size="24"></icon> -->
-                    <text class="device-detail-text">{{item.desc}}</text>
+                    <image class="device-local-img" src="../static/images/local-icon.png"></image>
+                    <text class="device-detail-text">{{detailData.deviceName}}</text>
                 </view>
             </view>
         </view>

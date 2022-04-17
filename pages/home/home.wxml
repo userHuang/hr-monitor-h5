@@ -2,7 +2,11 @@
 <view class="home-page">
     <image class="banner" src="../static/images/banner-bg.png"></image>
     <text class="title">汉瑞普泽工厂监控管理平台</text>
-    <button class="login-btn" bindtap="viewListTap">立即登录</button>
+    
+    <image class="login-bg" src="../static/images/login-bg.png"></image>
+    <button class="login-btn" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        立即登录
+    </button>
     <image class="bg-1" src="../static/images/home-bg1.png"></image>
     <image class="bg-2" src="../static/images/home-bg2.png"></image>
 </view>

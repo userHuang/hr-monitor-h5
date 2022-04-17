@@ -1,4 +1,5 @@
 // pages/deviceDetail/deviceDetail.js
+import $https from '../service/http.js'
 Page({
 
     /**
@@ -13,14 +14,16 @@ Page({
             status: '1',
             name: '测试生产线2号摄像头',
             desc: '测试生产线B03电线杆往上20厘米'
-        }]
+        }],
+        detailData: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const id = options.id
+        this.getDeatil(id)
     },
 
     /**
@@ -70,6 +73,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    async getDeatil (id) {
+        const resData = await $https({
+            url: `hrpz/iot/device/camera/detail/${id}`,
+            method: 'GET'
+        })
+        console.log(resData, '==getDeatil====')
+        this.setData({
+            detailData: resData.data || {}
+        })
     },
 
     statechange (e) {

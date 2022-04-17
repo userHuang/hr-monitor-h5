@@ -1,4 +1,5 @@
 // pages/home/home.js
+import $https from '../service/http.js'
 Page({
 
     /**
@@ -67,6 +68,41 @@ Page({
     viewListTap () {
         wx.navigateTo({
             url: '../monitorList/monitorList'
+        })
+    },
+
+    getPhoneNumber (e) {
+        console.log(e, '=e=====')
+        const {iv, encryptedData} = e.detail
+        const wxAppId = 'wxeae012dbaa2d39f4'
+        wx.login({
+            success: async (res) => {
+                console.log(res, '====res====')
+                const loginCode = res.code
+                const resData = await $https({
+                    url: 'hrpz/weChat/login',
+                    method: 'POST',
+                    data: {
+                        encryptedData,
+                        iv,
+                        loginCode,
+                        wxAppId
+                    }
+                })
+                console.log(resData, '==resData====')
+                wx.navigateTo({
+                    url: '../monitorList/monitorList'
+                })
+            }
+        })
+        wx.getSetting({
+            success (res){
+                console.log(res, '=====ss====')
+              if (res.authSetting['scope.userInfo']) {
+                // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                
+              }
+            }
         })
     }
 })

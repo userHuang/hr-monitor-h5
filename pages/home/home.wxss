@@ -23,16 +23,16 @@
 
 .login-btn {
     width: 548rpx !important;
-    height: 110rpx;
-    line-height: 110rpx;
-    background: #7E1B0E;
-    color: #FFFFFF;
+    height: 108rpx;
+    line-height: 102rpx;
     font-size: 32rpx;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
+    color: #FFFFFF !important;
     padding: 0;
     margin-top: 230rpx;
     border-radius: 60rpx;
+    border: none !important;
 }
 .bg-1 {
     width: 482rpx;
@@ -47,4 +47,10 @@
     position: absolute;
     right: 0;
     bottom: 0;
+}
+.login-bg {
+    width: 680rpx;
+    height: 226rpx;
+    position: absolute;
+    top: 668rpx;
 }
