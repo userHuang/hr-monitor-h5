@@ -4,7 +4,10 @@
     <text class="title">汉瑞普泽工厂监控管理平台</text>
     
     <image class="login-bg" src="../static/images/login-bg.png"></image>
-    <button class="login-btn" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <button class="login-btn" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{!hasAuth}}">
+        立即登录
+    </button>
+    <button class="login-btn" plain="true" bindtap="viewListTap" wx:else>
         立即登录
     </button>
     <image class="bg-1" src="../static/images/home-bg1.png"></image>

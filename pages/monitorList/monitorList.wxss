@@ -123,3 +123,11 @@
     line-height: 28rpx;
     margin-left: 8rpx;
 }
+.no-data {
+    align-self: center;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #999999;
+    font-size: 24rpx;
+    margin-top: 300rpx;
+}

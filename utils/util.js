@@ -14,6 +14,8 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
+const appId = 'wxeae012dbaa2d39f4'
+
 module.exports = {
-  formatTime
+  formatTime, appId
 }

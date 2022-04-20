@@ -84,6 +84,18 @@ Page({
         this.setData({
             detailData: resData.data || {}
         })
+        const {accessToken, deviceSerial, channelNo} = resData.data
+        wx.navigateToMiniProgram({
+            appId: 'wxeae012dbaa2d39f4',
+            path: 'pages/live/live?accessToken=' + accessToken + '&deviceSerial='+deviceSerial+'&channelNo=' + channelNo,
+            success(res) {
+                // 打开成功
+            },
+            fail (res) {
+                console.log('--ee----')
+                wx.navigateBack()
+            }
+        })
     },
 
     statechange (e) {

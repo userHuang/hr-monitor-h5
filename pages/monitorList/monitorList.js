@@ -1,5 +1,7 @@
 // pages/monitorList/monitorList.js
 import $https from '../service/http.js'
+import {appId} from '../../utils/util.js'
+
 Page({
 
     /**
@@ -7,7 +9,7 @@ Page({
      */
     data: {
         statusData: [{
-            name: '全部设备',
+            name: '全部',
             value: 0,
             active: true,
             status: null
@@ -22,7 +24,8 @@ Page({
             active: false,
             status: 0
         }],
-        deviceData: []
+        deviceData: [],
+        searchValue: ''
     },
 
     /**
@@ -55,17 +58,15 @@ Page({
                 status,
                 pageNum: 1,
                 pageSize: 10,
-                searchValue: value ? value : '' 
+                searchValue: value || this.data.searchValue
             }
         })
-        console.log(resData, '==resData====')
         this.setData({
             deviceData: resData.rows || []
         })
     },
 
     statusSelectTap (e) {
-        console.log(e, '==e==')
         const index = e.currentTarget.dataset.index
         const statusData = this.data.statusData
         statusData.forEach((item, i) => {
@@ -79,24 +80,39 @@ Page({
     },
 
     inputSearch (e) {
-        console.log(e, '==ee===s====')
         const value = e.detail.value
         if (this.timer) {
             clearTimeout(this.timer)
         }
         this.timer = setTimeout(() => {
-            console.log(value, '====value===')
-            if (value) {
-                const arr = this.data.statusData.filter(item => item.active)
-                this.getDataList(arr[0].status, value)
-            }
-        }, 1000)
+            this.setData({
+                searchValue: value
+            })
+            const arr = this.data.statusData.filter(item => item.active)
+            this.getDataList(arr[0].status)
+        }, 800)
     },
 
-    viewDeviceDetail (e) {
+    async viewDeviceDetail (e) {
         const id = e.currentTarget.dataset.id
-        wx.navigateTo({
-            url: '../deviceDetail/deviceDetail?id=' + id
+        // wx.navigateTo({
+        //     url: '../deviceDetail/deviceDetail?id=' + id
+        // })
+        const resData = await $https({
+            url: `hrpz/iot/device/camera/detail/${id}`,
+            method: 'GET'
+        })
+        console.log(resData, '==getDeatil====')
+        const {accessToken, deviceSerial, channelNo} = resData.data
+        wx.navigateToMiniProgram({
+            appId,
+            path: 'pages/live/live?accessToken=' + accessToken + '&deviceSerial='+deviceSerial+'&channelNo=' + channelNo,
+            success(res) {
+                // 打开成功
+            },
+            fail (res) {
+                console.log('--ee----')
+            }
         })
     }
 })

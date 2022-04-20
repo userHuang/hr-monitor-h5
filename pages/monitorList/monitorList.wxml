@@ -23,5 +23,6 @@
                 </view>
             </view>
         </view>
+        <text class="no-data" wx:if="{{!deviceData.length}}">暂无数据</text>
     </view>
 </view>
