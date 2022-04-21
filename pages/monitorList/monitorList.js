@@ -1,6 +1,5 @@
 // pages/monitorList/monitorList.js
 import $https from '../service/http.js'
-import {appId} from '../../utils/util.js'
 
 Page({
 
@@ -51,6 +50,9 @@ Page({
         })
     },
     async getDataList (status, value) {
+        wx.showLoading({
+            title: '加载中',
+        })
         const resData = await $https({
             url: 'hrpz/iot/device/camera/list',
             method: 'POST',
@@ -61,6 +63,7 @@ Page({
                 searchValue: value || this.data.searchValue
             }
         })
+        wx.hideLoading()
         this.setData({
             deviceData: resData.rows || []
         })
@@ -98,15 +101,19 @@ Page({
         // wx.navigateTo({
         //     url: '../deviceDetail/deviceDetail?id=' + id
         // })
+        wx.showLoading({
+            title: '加载中',
+        })
         const resData = await $https({
             url: `hrpz/iot/device/camera/detail/${id}`,
             method: 'GET'
         })
+        wx.hideLoading()
         console.log(resData, '==getDeatil====')
         const {accessToken, deviceSerial, channelNo} = resData.data
         wx.navigateToMiniProgram({
-            appId,
-            path: 'pages/live/live?accessToken=' + accessToken + '&deviceSerial='+deviceSerial+'&channelNo=' + channelNo,
+            appId: 'wxf2b3a0262975d8c2',
+            path: 'pages/live/live?accessToken=' + accessToken + '&deviceSerial=' + deviceSerial + '&channelNo=' + channelNo,
             success(res) {
                 // 打开成功
             },
