@@ -1,4 +1,4 @@
-const baseUrl = 'http://10.40.11.104:10081/'
+const baseUrl = 'http://39.99.241.210:9081/'
 
 const $https = ({url, method, data, header, showMsg = true}) => {
     return new Promise((resove, reject) => {
@@ -24,7 +24,16 @@ const $https = ({url, method, data, header, showMsg = true}) => {
             ...obj,
             token,
             success (res) {
-              console.log(res, 'res=request===')
+              if (res.data.code === 401) {
+                wx.showToast({
+                    title: res.data.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+                wx.navigateTo({
+                    url: '../home/home'
+                })
+              }
               if (res.data.code !== 200 && showMsg) {
                 wx.showToast({
                     title: res.data.msg,

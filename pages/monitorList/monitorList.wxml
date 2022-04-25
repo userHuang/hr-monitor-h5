@@ -6,7 +6,7 @@
     </view>
     <view class="status-tab">
         <view class="item-status" wx:for="{{statusData}}" wx:key="name" data-index="{{index}}" bindtap="statusSelectTap">
-            <text class="status-text {{item.active ? 'status-active' : ''}}">{{item.name}}({{item.value}})</text>
+            <text class="status-text {{item.active ? 'status-active' : ''}}">{{item.name}}{{hasPermission ? '(' + item.value + ')' : ''}}</text>
             <view class="status-line" wx:if="{{item.active}}"></view>
         </view>
     </view>
@@ -23,6 +23,6 @@
                 </view>
             </view>
         </view>
-        <text class="no-data" wx:if="{{!deviceData.length}}">暂无数据</text>
+        <text class="no-data" wx:if="{{!deviceData.length}}">{{hasPermission ? '暂无数据' : '抱歉，您暂无权限查看监控设备，请联系管理员'}}</text>
     </view>
 </view>

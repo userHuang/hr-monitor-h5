@@ -24,32 +24,85 @@ Page({
             status: 0
         }],
         deviceData: [],
-        searchValue: ''
+        searchValue: '',
+        hasPermission: true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function () {
-        this.getNums()
-        this.getDataList(null)
+    onShow: function () {
+        this.getIsFirstLogin()
+    },
+
+    async getIsFirstLogin () {
+        wx.clearStorageSync()
+        wx.showLoading({
+            title: '加载中',
+        })
+        wx.login({
+            success: async (res) => {
+                const loginCode = res.code
+                const resData = await $https({
+                    url: 'hrpz/weChat/loginByCode',
+                    method: 'POST',
+                    data: {
+                        loginCode
+                    },
+                    showMsg: false
+                })
+                wx.hideLoading()
+                if (resData.code ===  200) {
+                    if (resData.data.authToken) {
+                        wx.setStorageSync('token', resData.data.authToken)
+                        this.getDataList(null)
+                    }
+                } else {
+                    wx.showModal({
+                        title: '提示',
+                        content: '您还未登录，请先登录',
+                        showCancel: false,
+                        success (res) {
+                          if (res.confirm) {
+                            wx.navigateTo({
+                                url: '../home/home'
+                            })
+                          }
+                        }
+                    })
+                }
+            }
+        })
     },
 
     async getNums () {
         const resData = await $https({
             url: 'hrpz/iot/device/camera/countInfo',
-            method: 'POST'
+            method: 'POST',
+            showMsg: false,
+            data: {
+                searchValue: this.data.searchValue
+            }
         })
-        const {totalCount, onlineCount, offlineCount} = resData.data
-        const statusData = this.data.statusData
-        statusData[0].value = totalCount
-        statusData[1].value = onlineCount
-        statusData[2].value = offlineCount
-        this.setData({
-            statusData
-        })
+        if (resData.code ===  200) {
+            const {totalCount, onlineCount, offlineCount} = resData.data
+            const statusData = this.data.statusData
+            statusData[0].value = totalCount
+            statusData[1].value = onlineCount
+            statusData[2].value = offlineCount
+            this.setData({
+                statusData
+            })
+        }
+        if (resData.code ===  403) {
+            this.setData({
+                hasPermission: false
+            })
+        }
+        
     },
     async getDataList (status, value) {
+        this.getNums()
         wx.showLoading({
             title: '加载中',
         })
