@@ -30,9 +30,11 @@ const $https = ({url, method, data, header, showMsg = true}) => {
                     icon: 'none',
                     duration: 2000
                 })
-                wx.navigateTo({
-                    url: '../home/home'
-                })
+                setTimeout(() => {
+                  wx.navigateTo({
+                      url: '../home/home'
+                  })
+                }, 1000)
               }
               if (res.data.code !== 200 && showMsg) {
                 wx.showToast({
@@ -40,7 +42,7 @@ const $https = ({url, method, data, header, showMsg = true}) => {
                     icon: 'none',
                     duration: 2000
                 })
-                reject()
+                reject(res.data)
               }
               resove(res.data)
             },

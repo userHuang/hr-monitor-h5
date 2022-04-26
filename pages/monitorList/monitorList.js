@@ -31,15 +31,15 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onShow: function () {
+    onShow () {
         this.getIsFirstLogin()
     },
 
     async getIsFirstLogin () {
         wx.clearStorageSync()
-        wx.showLoading({
-            title: '加载中',
-        })
+        // wx.showLoading({
+        //     title: '加载中',
+        // })
         wx.login({
             success: async (res) => {
                 const loginCode = res.code
@@ -84,6 +84,7 @@ Page({
                 searchValue: this.data.searchValue
             }
         })
+        console.log(resData, '==resData====')
         if (resData.code ===  200) {
             const {totalCount, onlineCount, offlineCount} = resData.data
             const statusData = this.data.statusData
@@ -91,18 +92,24 @@ Page({
             statusData[1].value = onlineCount
             statusData[2].value = offlineCount
             this.setData({
+                hasPermission: true,
                 statusData
             })
-        }
-        if (resData.code ===  403) {
+            return true
+        } else {
             this.setData({
-                hasPermission: false
+                hasPermission: false,
+                deviceData: []
             })
+            return false
         }
-        
     },
     async getDataList (status, value) {
-        this.getNums()
+        const res = await this.getNums()
+        console.log(res, '==res===')
+        if (!res) {
+          return
+        }
         wx.showLoading({
             title: '加载中',
         })
